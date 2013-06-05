@@ -162,14 +162,15 @@ var NovelScript = function() {
         text: "",
         preventDefaultDraw: false,
         font: "Palatino Linotype",
-        noResize: false
+        noResize: false,
+        history: []
     };
     var NovelCanvas = function(options) {
         if (!options) {
             throw new Error("Options not defined.", "NovelScript.js");
         }
         this.fontSize = options.fontSize && Object.prototype.toString.call(options.fontSize) === "[object String]" ? options.fontSize : defaults.fontSize;
-        this.history = [];
+        this.history = options.history && Object.prototype.toString.call(options.history) === "[object Array]" ? options.history : defaults.history;
         this.goldenRatio = 1.618;
         this.noResize = options.noResize && Object.prototype.toString.call(options.noResize) === "[object Boolean]" ? options.noResize : defaults.noResize;
         if (options.target && Object.prototype.toString.call(options.target) === "[object String]") {
